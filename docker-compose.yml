@@ -4,7 +4,7 @@ services:
     app:
         build: .
         container_name: app
-        entrypoint: dockerize -template .docker/app/.env -wait tcp://db:3306 --timeout 40s ./.docker/entrypoint.sh
+        entrypoint: dockerize -template .docker/app/.env:.env -wait tcp://db:3306 --timeout 40s ./.docker/entrypoint.sh
         volumes: 
             - .:/var/www
         networks: 
@@ -15,7 +15,7 @@ services:
         environment:
             - DB_HOST=db
             - DB_DATABASE=laravel
-            - DB_USER = root
+            - DB_USER=root
             - DB_PASSWORD=root
     
     nginx:
@@ -49,7 +49,7 @@ services:
             - MYSQL_USER=root
         networks: 
             - app-network
-                    
+
     redis:
         image: redis:alpine
         expose: 
