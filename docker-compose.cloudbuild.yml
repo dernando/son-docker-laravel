@@ -12,11 +12,11 @@ services:
         depends_on: 
             - db
             - redis
-        #environment:
-        #    - DB_HOST=db
-        #    - DB_DATABASE=laravel
-        #    - DB_USER=root
-        #    - DB_PASSWORD=root
+        environment:
+            - DB_HOST=db
+            - DB_DATABASE=laravel
+            - DB_USER=root
+            - DB_PASSWORD=root
     
     nginx:
         build: .docker/nginx
